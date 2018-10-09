@@ -7,5 +7,5 @@ file { '/usr/local/bin/run-puppet':
 cron { 'run-puppet':
   command => '/usr/local/bin/run-puppet',
   hour    => '*',
-  minute  => '*/5',
+  minute  => '*/15',
 }
