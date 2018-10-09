@@ -1,6 +1,4 @@
-include apt
-
-node 'chris' {
+node 'themachine' {
 	package { 'vim':
 		ensure => 'present'
 	}
