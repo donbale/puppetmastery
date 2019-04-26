@@ -1,22 +1,26 @@
-file { '/tmp/jre-11.0.1_linux-x64_bin.tar.gz':
+exec { 'make_directory_powerchute':
+  command => 'mkdir /home/administrator/Linux_64',
+}
+
+file { '/home/administrator/Linux_64/jre-11.0.1_linux-x64_bin.tar.gz':
   ensure => file,
   mode   => '0777',
   source => '/etc/puppetlabs/code/environments/production/files/powerchute/jre-11.0.1_linux-x64_bin.tar.gz',
 }
 
-file { '/tmp/pcns430.tar.gz':
+file { '/home/administrator/Linux_64/pcns430.tar.gz':
   ensure => file,
   mode   => '0777',
   source => '/etc/puppetlabs/code/environments/production/files/powerchute/pcns430.tar.gz',
 }
 
-file { '/tmp/install.sh':
+file { '/home/administrator/Linux_64/install.sh':
   ensure => file,
   mode   => '0777',
   source => '/etc/puppetlabs/code/environments/production/files/powerchute/install.sh',
 }
 
 exec { 'setup_powerchute':
-  require => File["/tmp/install.sh"],
-  command => '/tmp/install.sh',
+  require => File["/home/administrator/Linux_64/install.sh"],
+  command => '/home/administrator/Linux_64/install.sh',
 }
