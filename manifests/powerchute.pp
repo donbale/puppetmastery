@@ -24,7 +24,6 @@ file { '/tmp/install.sh':
 
 exec { 'setup_powerchute':
   require => File["/tmp/install.sh"],
-  refreshonly => true,
   command => '/tmp/install.sh',
   user    => 'administrator',
   group   => 'administrator',
