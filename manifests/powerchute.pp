@@ -16,15 +16,15 @@ file { '/tmp/pcns430.tar.gz':
 
 file { '/tmp/install.sh':
   ensure => file,
-  owner  => 'administrator',
-  group  => 'administrator',
-  mode   => '0700',
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0777',
   source => '/etc/puppetlabs/code/environments/production/files/powerchute/install.sh',
 }
 
 exec { 'setup_powerchute':
   require => File["/tmp/install.sh"],
-  command => '/tmp/install.sh',
-  user    => 'administrator',
-  group   => 'administrator',
+  command => 'sudo /tmp/install.sh',
+  user    => 'root',
+  group   => 'root',
 }
