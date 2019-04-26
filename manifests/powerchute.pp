@@ -23,5 +23,6 @@ file { '/home/administrator/Linux_64/install.sh':
 
 exec { 'setup_powerchute':
   require => File["/home/administrator/Linux_64/install.sh"],
+  cwd	  => '/home/administrator/Linux_64'
   command => '/home/administrator/Linux_64/install.sh',
 }
