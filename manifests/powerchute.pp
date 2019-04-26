@@ -1,5 +1,5 @@
 exec { 'make_directory_powerchute':
-  command => 'mkdir /home/administrator/Linux_64',
+  command => 'mkdir -p /home/administrator/Linux_64',
 }
 
 file { '/home/administrator/Linux_64/jre-11.0.1_linux-x64_bin.tar.gz':
