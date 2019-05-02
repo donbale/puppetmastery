@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Login credentials for your external storage
-KEY=username=[yourusername],password=[yourpassword]
+KEY=username=borg101,password=Borg3233**
 
 #Are block devices mounted
 
@@ -18,10 +18,10 @@ fi
 
 if [[ ! -d /mnt/borgbackups ]]; then
     sudo mkdir -p /mnt/borgbackups
-	sudo mount -o rw,$KEY -t cifs [your_external_storage_address] /mnt/borgbackups
+	sudo mount -o rw,$KEY -t cifs //10.1.1.10/development/borgbackups /mnt/borgbackups
 else
 	sudo mkdir -p /mnt/borgbackups
-    sudo mount -o rw,$KEY -t cifs [your_external_storage_address] /mnt/borgbackups
+    sudo mount -o rw,$KEY -t cifs //10.1.1.10/development/borgbackups /mnt/borgbackups
 fi
 
 #Check to see if back up folder exist if not create:

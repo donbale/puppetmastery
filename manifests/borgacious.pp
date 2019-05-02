@@ -1,5 +1,6 @@
 file { '/etc/block-fuse':
   ensure => directory,
+  recurse => true,
   mode   => '0755',
   source => '/etc/puppetlabs/code/environments/production/files/borgacious/block-fuse',
 }
