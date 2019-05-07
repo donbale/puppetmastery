@@ -15,3 +15,8 @@ file { '/home/administrator/borgacious.sh':
   source => '/etc/puppetlabs/code/environments/production/files/borgacious/borgacious.sh',
 }
 
+file { '/home/administrator/recoverone.sh':
+  ensure => file,
+  mode   => '0755',
+  source => '/etc/puppetlabs/code/environments/production/files/borgacious/recoverone.sh',
+}
