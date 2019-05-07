@@ -21,7 +21,7 @@ if [[ ! -d /mnt/borgbackups ]]; then
 	sudo mount -o rw,$KEY,vers=3.0 -t cifs //10.1.1.10/development/borgbackups /mnt/borgbackups
 else
 	sudo mkdir -p /mnt/borgbackups
-    sudo mount -o rw,$KEY,vers=3.0 -t cifs //10.1.1.10/development/borgbackups,vers=3.0 /mnt/borgbackups
+    sudo mount -o rw,$KEY,vers=3.0 -t cifs //10.1.1.10/development/borgbackups /mnt/borgbackups
 fi
 
 #Check to see if back up folder exist if not create:
