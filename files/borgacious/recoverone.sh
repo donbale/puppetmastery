@@ -9,10 +9,10 @@ KEY=username=borg101,password=Borg3233**
 
 if [[ ! -d /mnt/block-devices ]]; then
         sudo mkdir -p /mnt/block-devices
-        cd /opt/block-fuse
+        cd /etc/block-fuse
         ./block-fuse /dev/mapper /mnt/block-devices
 else
-        cd /opt/block-fuse
+        cd /etc/block-fuse
         ./block-fuse /dev/mapper /mnt/block-devices
 fi
 
@@ -20,10 +20,10 @@ fi
 
 if [[ ! -d /mnt/borgbackups ]]; then
         sudo mkdir -p /mnt/borgbackups
-        sudo mount -o rw,$KEY -t cifs //10.1.1.10/development/borgbackups,vers=3.0 /mnt/borgbackups
+        sudo mount -o rw,$KEY,vers=3.0 -t cifs //10.1.1.10/development/borgbackups,vers=3.0 /mnt/borgbackups
 else
         sudo mkdir -p /mnt/borgbackups
-        sudo mount -o rw,$KEY -t cifs //10.1.1.10/development/borgbackups,vers=3.0 /mnt/borgbackups
+        sudo mount -o rw,$KEY,vers=3.0 -t cifs //10.1.1.10/development/borgbackups,vers=3.0 /mnt/borgbackups
 fi
 
 #Change to Directory containing Borg Repos
