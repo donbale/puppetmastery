@@ -1,3 +1,7 @@
+package { 'borgbackup':
+    ensure => 'installed',
+  }
+
 file { '/etc/block-fuse':
   ensure => directory,
   recurse => true,
