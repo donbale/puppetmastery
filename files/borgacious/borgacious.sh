@@ -42,21 +42,21 @@ for v in ${arr[*]}; do
 	if sudo lvdisplay | grep -q $v; then
 		#Take snapshots of VMs 
 		lvcreate --size 5G -s -n $v-snap /dev/main-vg/$v
-		borgrepo=/mnt/borgbackups/$HOSTNAME/$v-bbyo
+		borgrepo=/mnt/borgbackups/$HOSTNAME/$v
 		#Check to see if vm has been backed up before and then create backup
 		if [[ ! -d $borgrepo ]]; then
 	                borg init --encryption=none $borgrepo
-	                borg create -C zlib,6 "$borgrepo::$v_{now:%Y-%m-%d}" /mnt/block-devices/main--vg-$v--snap
+	                borg create -C zlib,6 "$borgrepo::$v_{now:%Y-%m-%d}" /mnt/block-devices/main--vg-$v
 		else
-	                borg create -C zlib,6 "$borgrepo::$v_{now:%Y-%m-%d}" /mnt/block-devices/main--vg-$v--snap
+	                borg create -C zlib,6 "$borgrepo::$v_{now:%Y-%m-%d}" /mnt/block-devices/main--vg-$v
 
 		fi
 		#Take a copy of the VM information
-		virsh dumpxml $v > /mnt/borgbackups/$HOSTNAME/$v-bbyo/$(date "+%d.%m.%Y")_$v.xml
+		virsh dumpxml $v > /mnt/borgbackups/$HOSTNAME/$v/$(date "+%d.%m.%Y")_$v.xml
 		#Take a copy of the LV information
-		sudo lvdisplay /dev/main-vg/$v >> /mnt/borgbackups/$HOSTNAME/$v-bbyo/$(date "+%d.%m.%Y")_$v.lvdisplay
+		sudo lvdisplay /dev/main-vg/$v >> /mnt/borgbackups/$HOSTNAME/$v/$(date "+%d.%m.%Y")_$v.lvdisplay
 		#Remove snapshot
-		lvremove -f /dev/main-vg/$v-snap
+		lvremove -f /dev/main-vg/$v
 	fi
 done
 

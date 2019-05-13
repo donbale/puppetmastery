@@ -50,13 +50,14 @@ do
   LATESTLVINFO=$(ls -t *.lvdisplay | head -1)
   LATESTVMXML=$(ls -t *.xml | head -1)
   LVSIZE=$(cat "$LATESTLVINFO" | grep GiB | sed 's/[^0-9,.]*//g')
+  VOLUMEGROUP=main-vg
 
   #Here we move to where our repo has extracted
   cd /mnt/borgbackups/"$HOSTNAME"/"$REPO"/mnt/block-devices
   #Create the LV using the config extracted from the backed up lvdisplay file
-  sudo lvcreate --size "$LVSIZE"G --name "$REPO"
+  sudo lvcreate --size "$LVSIZE"G --name "$REPO" $VOLUMEGROUP
   #We will copy the backed up block to the LV partition we have created
-  sudo dd if=main--vg-"$REPO"--snap of=/dev/main-vg/"$REPO"
+  sudo dd if=main--vg-"$REPO" of=/dev/main-vg/"$REPO"
   #Now we can remove the extracted block
   sudo rm main--vg-"$REPO"
 
