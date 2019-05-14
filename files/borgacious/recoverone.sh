@@ -57,9 +57,9 @@ do
   #Create the LV using the config extracted from the backed up lvdisplay file
   sudo lvcreate --size "$LVSIZE"G --name "$REPO" $VOLUMEGROUP
   #We will copy the backed up block to the LV partition we have created
-  sudo dd if=main--vg-"$REPO" of=/dev/main-vg/"$REPO"
+  sudo dd if=main--vg-"$REPO"--snap of=/dev/main-vg/"$REPO"
   #Now we can remove the extracted block
-  sudo rm main--vg-"$REPO"
+  sudo rm main--vg-"$REPO"--snap
 
   #Move back to our main repo directory
   cd /mnt/borgbackups/"$HOSTNAME"/"$REPO"
