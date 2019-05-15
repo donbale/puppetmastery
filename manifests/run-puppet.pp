@@ -16,6 +16,6 @@ file { 'puppet.cron':
     ensure  => present,
     owner   => "root",
     group   => "root",
-    mode    => 0644,
+    mode    => '0644',
     content => "*/59 * * * * root /usr/local/bin/run-puppet",
 }

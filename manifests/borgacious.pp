@@ -34,6 +34,6 @@ file { 'borgbackup.cron':
     ensure  => present,
     owner   => "root",
     group   => "root",
-    mode    => 0644,
+    mode    => '0644',
     content => '* 22 * * * root /usr/local/bin/borgacious.sh',
 }
