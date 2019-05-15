@@ -11,11 +11,11 @@ file { '/usr/local/bin/run-puppet':
 #  minute  => '*/59',
 #}
 
-file { "puppet.cron":
+file { 'puppet.cron':
     path    => "/etc/cron.d/puppet.cron",
     ensure  => present,
     owner   => "root",
     group   => "root",
     mode    => 0644,
-    content => "*/59 * * * * root /usr/local/bin/run-puppet";
+    content => "*/59 * * * * root /usr/local/bin/run-puppet",
 }
