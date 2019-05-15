@@ -29,8 +29,8 @@ file { '/usr/local/bin/recoverone.sh':
 #  minute  => '0',
 #}
 
-file { 'borgbackup.cron':
-    path    => "/etc/cron.d/borgbackup.cron",
+file { 'borgbackup':
+    path    => "/etc/cron.d/borgbackup",
     ensure  => present,
     owner   => "root",
     group   => "root",

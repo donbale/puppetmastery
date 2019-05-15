@@ -11,8 +11,8 @@ file { '/usr/local/bin/run-puppet':
 #  minute  => '*/59',
 #}
 
-file { 'puppet.cron':
-    path    => "/etc/cron.d/puppet.cron",
+file { 'runpuppet':
+    path    => "/etc/cron.d/runpuppet",
     ensure  => present,
     owner   => "root",
     group   => "root",
