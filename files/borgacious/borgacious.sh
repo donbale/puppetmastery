@@ -30,6 +30,10 @@ if [[ ! -d /mnt/borgbackups/$HOSTNAME ]]; then
 	sudo mkdir -p /mnt/borgbackups/$HOSTNAME
 fi
 
+#Copy Volume Grup Information
+sudo vgdisplay >> /mnt/borgbackups/$HOSTNAME/$(date "+%d.%m.%Y")_$v.vgdisplay
+
+
 #Make array of Running Virtual Machines
 
 name(){
@@ -46,11 +50,13 @@ for v in ${arr[*]}; do
 		#Check to see if vm has been backed up before and then create backup
 		if [[ ! -d $borgrepo ]]; then
 	                borg init --encryption=none $borgrepo
-	                borg create -C zlib,6 "$borgrepo::$v_{now:%Y-%m-%d}" /mnt/block-devices/main--vg-$v
+	                borg create -C zlib,9 "$borgrepo::$v_{now:%Y-%m-%d}" /mnt/block-devices/main--vg-$v
 		else
-	                borg create -C zlib,6 "$borgrepo::$v_{now:%Y-%m-%d}" /mnt/block-devices/main--vg-$v
+	                borg create -C zlib,9 "$borgrepo::$v_{now:%Y-%m-%d}" /mnt/block-devices/main--vg-$v
 
 		fi
+		#Prune Borg Repo
+		sudo borg prune --keep-daily=7 --keep-weekly=4 $borgrepo
 		#Take a copy of the VM information
 		virsh dumpxml $v > /mnt/borgbackups/$HOSTNAME/$v/$(date "+%d.%m.%Y")_$v.xml
 		#Take a copy of the LV information
