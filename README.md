@@ -6,7 +6,7 @@ One Repo To Control Them All
 
 Puppet is a configuration management tool which allows us to have continuity on our linux based infrastructure.
 
-To centralise matters I have adopted a masterless Puppet setup which requires a copy of all Puppet modules to be copied to each node via Git and then Puppet will apply the appropriate changes locally.
+To centralise matters I have adopted a masterless Puppet setup which requires a copy of all Puppet modules to be installed on each node via Git and then Puppet will apply the appropriate changes locally.
 
  
 ### Prerequisites
