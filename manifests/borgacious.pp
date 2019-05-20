@@ -21,14 +21,6 @@ file { '/usr/local/bin/recoverone.sh':
   source => '/etc/puppetlabs/code/environments/production/files/borgacious/recoverone.sh',
 }
 
-#cron { 'run-borgbackup':
-#  ensure => 'present',
-#  command => '/usr/local/bin/borgacious.sh >> /tmp/borgcron 2>&1',
-#  user  => root,
-#  hour    => '22',
-#  minute  => '0',
-#}
-
 file { 'borgbackup':
     path    => "/etc/cron.d/borgbackup",
     ensure  => present,
