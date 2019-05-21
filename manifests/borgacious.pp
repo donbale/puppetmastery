@@ -27,5 +27,5 @@ file { 'borgbackup':
     owner   => "root",
     group   => "root",
     mode    => '0644',
-    content => '* 22 * * * root /usr/local/bin/borgacious.sh',
+    content => '* 22 * * * root /usr/local/bin/borgacious.sh >> /tmp/borgacious',
 }
