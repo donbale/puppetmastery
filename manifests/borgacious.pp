@@ -10,20 +10,20 @@ file { '/etc/block-fuse':
 }
 
 file { '/usr/local/bin/borgacious.sh':
-  ensure => file,
+  ensure => absent,
   mode   => '0755',
   source => '/etc/puppetlabs/code/environments/production/files/borgacious/borgacious.sh',
 }
 
 file { '/usr/local/bin/recoverone.sh':
-  ensure => file,
+  ensure => absent,
   mode   => '0755',
   source => '/etc/puppetlabs/code/environments/production/files/borgacious/recoverone.sh',
 }
 
 file { 'borgbackup':
     path    => "/etc/cron.d/borgbackup",
-    ensure  => present,
+    ensure  => absent,
     owner   => "root",
     group   => "root",
     mode    => '0644',
